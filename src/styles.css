@@ -25,19 +25,22 @@ body {
 
 .swiper {
   width: 240px;
-  height: 380px;
+  height: 'fit';
 }
 
 @media (max-width: 640px) {
   .swiper{
-    width: 180px;
-    height: 340px;
+    width: 170px;
   }
 }
 @media (max-width: 450px) {
   .swiper{
     width: 140px;
-    height: 260px;
+  }
+}
+@media (max-width: 400px) {
+  .swiper{
+    width: 120px;
   }
 }
 

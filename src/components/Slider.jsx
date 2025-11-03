@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import "../styles.css"
 import { EffectCards } from 'swiper/modules';
-import SkillCard from './skillCard';
+import Card from './Card';
 const skill1 ={
     "skillId": 1,
     "skillName": "Beginner Guitar Lessons",
@@ -65,16 +65,16 @@ export default function Slider() {
         className="mySwiper"
       >
         <SwiperSlide>
-            <SkillCard skill={skill1}></SkillCard>
+            <Card skill={skill1}></Card>
         </SwiperSlide>
         <SwiperSlide>
-            <SkillCard skill={skill2}></SkillCard>
+            <Card skill={skill2}></Card>
         </SwiperSlide>
         <SwiperSlide>
-            <SkillCard skill={skill3}></SkillCard>
+            <Card skill={skill3}></Card>
         </SwiperSlide>
         <SwiperSlide>
-            <SkillCard skill={skill4}></SkillCard>
+            <Card skill={skill4}></Card>
         </SwiperSlide>
         
       </Swiper>

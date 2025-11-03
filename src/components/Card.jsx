@@ -1,12 +1,12 @@
 import React from "react";
 
-const SkillCard = ({ skill }) => {
+const Card = ({ skill }) => {
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden transition hover:shadow-lg">
       <img
         src={skill.image}
         alt={skill.skillName}
-        className="w-full h-48 object-cover"
+        className="w-full h-[50%] object-cover"
       />
       <div className="p-2 sm:p-4">
         <h3 className="text-lg font-semibold text-black text-[min(3.5vw,18px)]">{skill.skillName}</h3>
@@ -23,4 +23,4 @@ const SkillCard = ({ skill }) => {
   );
 };
 
-export default SkillCard;
+export default Card;

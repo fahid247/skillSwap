@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router";
+
 
 const SkillCard = ({ skill }) => {
+    const navigate = useNavigate();
+    const handleClick =()=>{
+        navigate(`detailedSkill/${skill.skillId}`)
+    }
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden transition hover:shadow-lg">
       <img
@@ -18,7 +24,7 @@ const SkillCard = ({ skill }) => {
         </div>
 
         <div className="flex items-center mt-2">
-            <button className="btn bg-[#ffd793] text-[#703B3B] border-none text-[min(3vw,14px)] ">View Details</button>
+            <button onClick={handleClick} className="btn bg-[#ffd793] text-[#703B3B] border-none text-[min(3vw,14px)] ">View Details</button>
         </div>
       </div>
     </div>

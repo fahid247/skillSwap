@@ -1,9 +1,10 @@
-import React from "react";
+
 import Slider from "../components/Slider";
 import SkillCards from "../components/skillCards";
 import HeroSlider from "../components/HeroSlider";
 import HowItWorks from "../components/HowItWorks";
 import OurImpact from "../components/OurImpact";
+
 
 const Home = () => {
   return (

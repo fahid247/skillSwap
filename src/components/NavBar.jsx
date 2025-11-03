@@ -1,15 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../assets/Untitled.jpg"
 import { FaUserCircle } from "react-icons/fa";
+import "../app.css"
+
 
 const Navbar = () => {
     const links = <>
         <li>
-              <NavLink>Home</NavLink>
+              <NavLink to={'/'}>Home</NavLink>
             </li>
             <li>
-              <NavLink>My Profile</NavLink>
+              <NavLink to={"/myProfile"}>My Profile</NavLink>
             </li>
     </>
   return (
@@ -40,7 +42,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className=" flex items-center gap-2 font-bold text-xl text-[min(4vw,20px)] text-[#703B3B] "><img className="h-7 w-7 rounded-2xl" src={logo} alt="" />SkillSwap</div>
+        <div className=" flex items-center gap-2 font-bold text-xl text-[min(4vw,20px)] text-[#703B3B] "><img className="h-7 w-7 rounded-2xl" src={logo} alt="" /><Link to={"/"}>SkillSwap</Link></div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-semibold text-white">
@@ -49,7 +51,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex items-center gap-2">
         <FaUserCircle size={24}></FaUserCircle>
-        <a className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">Login</a>
+        <Link to={"/login"} className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">Login</Link>
       </div>
     </div>
   );

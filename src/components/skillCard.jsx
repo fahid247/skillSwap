@@ -17,7 +17,9 @@ const SkillCard = ({ skill }) => {
           <span className="text-yellow-500 text-[min(2.8vw,14px)]">⭐ {skill.rating}</span>
         </div>
 
-        
+        <div className="flex items-center mt-2">
+            <button className="btn bg-[#ffd793] text-[#703B3B] border-none text-[min(3vw,14px)] ">View Details</button>
+        </div>
       </div>
     </div>
   );

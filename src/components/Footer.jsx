@@ -7,7 +7,6 @@ const Footer = () => {
         <footer className="bg-base-200 text-base-content pt-12 pb-6 mt-12">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        {/* Brand Info */}
         <div>
           <h2 className="text-2xl font-bold mb-4 text-primary">SkillSwap</h2>
           <p className="text-gray-600">
@@ -16,7 +15,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Contact Info */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
           <ul className="space-y-2 text-gray-600">
@@ -32,7 +30,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-gray-600">
@@ -43,7 +40,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Social & Policies */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
           <div className="flex gap-4 mb-4">
@@ -68,7 +64,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-base-300 mt-10 pt-4 text-center text-gray-500 text-sm">
         © {new Date().getFullYear()} SkillSwap. All rights reserved.
       </div>

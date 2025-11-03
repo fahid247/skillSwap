@@ -3,14 +3,12 @@ import bg1 from "../assets/155880-OV59GW-684.jpg"
 import bg2 from "../assets/2112121.jpg"
 import bg3 from "../assets/problemsolving02.jpg"
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules'
 
 
 
-// import required modules
 import { Pagination } from 'swiper/modules';
 
 export default function App() {

@@ -3,6 +3,7 @@ import Slider from "../components/Slider";
 import SkillCards from "../components/skillCards";
 import HeroSlider from "../components/HeroSlider";
 import HowItWorks from "../components/HowItWorks";
+import OurImpact from "../components/OurImpact";
 
 const Home = () => {
   return (
@@ -19,6 +20,9 @@ const Home = () => {
         <div className="flex-1">
         <Slider></Slider>
         </div>
+      </section>
+      <section className="mt-10 sm:mt-20">
+        <OurImpact></OurImpact>
       </section>
       <section className="mt-10 sm:mt-20">
         <HowItWorks></HowItWorks>

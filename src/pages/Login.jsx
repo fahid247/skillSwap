@@ -14,6 +14,8 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleLogin = () => {
@@ -100,6 +102,8 @@ const Login = () => {
                     name="email"
                     className="input bg-[#fffbd1]"
                     placeholder="Email"
+                    value={emailInput}
+                    onChange={(e) => setEmailInput(e.target.value)}
                     required
                   />
                   <label className="label">Password</label>
@@ -110,7 +114,13 @@ const Login = () => {
                     placeholder="Password"
                   />
                   <div>
-                    <a className="link link-hover">Forgot password?</a>
+                    <Link
+                      to="/forgetPassword"
+                      state={{ email: emailInput }} 
+                      className="link link-hover text-blue-800"
+                    >
+                      Forgot password?
+                    </Link>
                   </div>
                   {passwordError && (
                     <p className="text-red-600 text-sm mt-1">{passwordError}</p>

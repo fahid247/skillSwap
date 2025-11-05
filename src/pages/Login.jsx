@@ -33,8 +33,7 @@ const Login = () => {
                     Don't have any account?{" "}
                     <span>
                       <Link className="text-blue-900" to="/register">
-                        {" "}
-                        Register Now!
+                        SignUp Now!
                       </Link>
                     </span>
                   </p>

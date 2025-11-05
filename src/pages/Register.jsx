@@ -8,21 +8,25 @@ const Register = () => {
         <div className="hero bg-[#E1D0B3] min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
-              <h1 className="text-5xl font-bold">Register now!</h1>
+              <h1 className="text-5xl font-bold">SignUp now!</h1>
               
             </div>
             <div className="card bg-white w-full max-w-sm shrink-0 shadow-2xl">
               <div className="card-body">
                 <fieldset className="fieldset">
+                  <label className="label">Name</label>
+                  <input type="text" className="input bg-[#fffbd1]" placeholder="Enter your name" />
                   <label className="label">Email</label>
                   <input type="email" className="input bg-[#fffbd1]" placeholder="Email" />
+                  <label className="label">Name</label>
+                  <input type="text" className="input bg-[#fffbd1]" placeholder="Photo-URL" />
                   <label className="label">Password</label>
                   <input
                     type="password"
                     className="input bg-[#fffbd1] "
                     placeholder="Password"
                   />
-                  <button className="btn btn-neutral mt-4">Register</button>
+                  <button className="btn btn-neutral mt-4">Sign Up</button>
                   <p>Do you have any account?  <span className="text-blue-800"><Link to={"/login"}>Log In</Link></span></p>
                 </fieldset>
               </div>

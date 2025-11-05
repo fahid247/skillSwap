@@ -12,7 +12,6 @@ const DetailedSkill = () => {
   const [open, setOpen] = useState(false);
   const filtertheSkill = skills.filter((data) => data.skillId == id);
   const filteredSkill = filtertheSkill[0];
-  console.log(filteredSkill);
 
   useEffect(() => {
     fetch("/skills.json")

@@ -6,6 +6,7 @@ import DetailedSkill from '../pages/DetailedSkill';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import MyProfile from '../pages/MyProfile';
+import PrivateRoute from '../PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
             },
             {
                 path:"detailedSkill/:id",
-                Component:DetailedSkill
+                element:<PrivateRoute>
+                    <DetailedSkill></DetailedSkill>
+                </PrivateRoute>
             },
             {
                 path:"/myProfile",

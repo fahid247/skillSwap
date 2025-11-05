@@ -6,6 +6,8 @@ import HowItWorks from "../components/HowItWorks";
 import OurImpact from "../components/OurImpact";
 
 
+
+
 const Home = () => {
   return (
     <div className="bg-[#E1D0B3] max-w-[1440px] mx-auto p-5">

@@ -1,7 +1,88 @@
-import React from "react";
-import { Link } from "react-router";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { Link, useLocation, useNavigate } from "react-router";
+import { auth } from "../firebase.init";
+import toast from "react-hot-toast";
+import { use, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  const { setUser } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [passwordError, setPasswordError] = useState("");
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log("Google Login Successful:", user);
+        setUser(user);
+
+        toast.success("Logged in with Google!", {
+          style: {
+            backgroundColor: "lightgreen",
+          },
+        });
+
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        console.error("Google Login Error:", error);
+        toast.error(`${error.message}`, {
+          style: {
+            backgroundColor: "black",
+            color: "bisque",
+          },
+        });
+      });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError("Password must contain at least one uppercase letter.");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setPasswordError("Password must contain at least one lowercase letter.");
+      return;
+    }
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters long.");
+      return;
+    }
+    setPasswordError("");
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("LogIn Successful", {
+          style: {
+            backgroundColor: "lightgreen",
+          },
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`${error.message}`, {
+          style: {
+            backgroundColor: "black",
+            color: "bisque",
+          },
+        });
+      });
+  };
   return (
     <>
       <section className="min-h-screen bg-[#E1D0B3] max-w-[1440px] mx-auto p-5">
@@ -12,32 +93,45 @@ const Login = () => {
             </div>
             <div className="card bg-white w-full max-w-sm shrink-0 shadow-2xl">
               <div className="card-body">
-                <fieldset className="fieldset">
+                <form onSubmit={handleLogin} className="fieldset">
                   <label className="label">Email</label>
                   <input
                     type="email"
+                    name="email"
                     className="input bg-[#fffbd1]"
                     placeholder="Email"
+                    required
                   />
                   <label className="label">Password</label>
                   <input
                     type="password"
+                    name="password"
                     className="input bg-[#fffbd1] "
                     placeholder="Password"
                   />
                   <div>
                     <a className="link link-hover">Forgot password?</a>
                   </div>
+                  {passwordError && (
+                    <p className="text-red-600 text-sm mt-1">{passwordError}</p>
+                  )}
                   <button className="btn btn-neutral mt-4">Login</button>
                   <p className="flex">
                     Don't have any account?{" "}
                     <span>
-                      <Link className="text-blue-900" to="/register">
+                      <Link
+                        state={location.state}
+                        className="text-blue-900"
+                        to="/register"
+                      >
                         SignUp Now!
                       </Link>
                     </span>
                   </p>
-                  <button className="btn bg-white text-black border-[#e5e5e5] mt-2">
+                  <button
+                    onClick={handleGoogleLogin}
+                    className="btn bg-white text-black border-[#e5e5e5] mt-2"
+                  >
                     <svg
                       aria-label="Google logo"
                       width="16"
@@ -67,7 +161,7 @@ const Login = () => {
                     </svg>
                     Login with Google
                   </button>
-                </fieldset>
+                </form>
               </div>
             </div>
           </div>

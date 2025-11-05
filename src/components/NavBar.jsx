@@ -1,11 +1,33 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/Untitled.jpg"
 import { FaUserCircle } from "react-icons/fa";
 import "../app.css"
+import { AuthContext } from "../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.init";
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
+    const {user , loading}=use(AuthContext);
+    const handleLogOut=()=>{
+        signOut(auth).then(()=>{
+            toast.success("signout successfully",{
+                style:{
+                    backgroundColor:"lightgreen"
+                }
+            })
+        }).catch((error)=>{
+                        toast.error(`${error}`,{
+                style:{
+                    backgroundColor:"black",
+                    color:"bisque"
+                }
+            })
+
+        })
+    }
     const links = <>
         <li>
               <NavLink to={'/'}>Home</NavLink>
@@ -51,7 +73,10 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex items-center gap-2">
         <FaUserCircle size={24}></FaUserCircle>
-        <Link to={"/login"} className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">Login</Link>
+        {user?<button onClick={handleLogOut} className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">Log Out</button>:<Link to={"/login"} className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">{loading?<div className="text-center flex justify-center items-center  text-gray-500">
+          <span className="loading loading-spinner loading-xl"></span>
+        </div>:"LogIn"}</Link>}
+        
       </div>
     </div>
   );

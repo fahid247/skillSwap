@@ -4,14 +4,90 @@ This is a website for learning skills for free , teach a skill and learn a skill
 
 Live Url : https://skillswap-de43c.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Key Features
 
-## React Compiler
+### 🧍‍♂️ User Authentication
+- Email & Password **Signup / Login** with Firebase.
+- **Google Login** integration.
+- **Password Reset** via email.
+- **User Profile Management** — users can view and update their name and profile photo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+### 🏷️ Skill Listings
+- Displays dynamic **Skill Cards** containing:
+  - Skill name  
+  - Provider details  
+  - Rating & price  
+  - Description and image  
+- Data fetched from a local JSON file or API.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# b12-a9-firesheild-fahid247
+---
+
+### 📋 Skill Details Page
+- Clicking on a skill opens a **detailed view** with full information.
+- Uses **React Router** and `useParams()` for dynamic routing.
+
+---
+
+### 🎨 Modern UI/UX
+- Fully **responsive design** using TailwindCSS.
+- **Swiper slider** for featured skills.
+- **Animate.css** for engaging animations on cards and components.
+- Clean and consistent color palette for an elegant look.
+
+---
+
+### 🧠 Context-Based Authentication
+- Implements **React Context API** for global user state management.
+- Tracks authentication status with **Firebase onAuthStateChanged()**.
+
+---
+
+### 🔐 Protected Routes
+- Certain routes (like *My Profile* or *Update Profile*) are accessible **only when logged in**.
+- Redirects unauthenticated users to the login page.
+
+---
+
+### 👤 My Profile Page
+- Displays **user’s name, photo, and email**.
+- Allows profile updates (e.g., change name, photo, etc.).
+
+---
+
+### 📨 Email Reset & Support
+- Functional **“Forgot Password?”** link that sends a reset email.
+- Opens **Gmail in a new tab** for user convenience.
+
+---
+
+### ⚙️ Developer-Friendly Setup
+- Built with:
+  - **React Router v6+**
+  - **Firebase Authentication**
+  - **React Context API**
+  - **TailwindCSS**
+- Uses **reusable and modular components** (`SkillCard`, `AuthProvider`, `PrivateRoute`, etc.)
+
+---
+
+### 🌟 Future Enhancements
+- ⭐ Skill rating & review system  
+- 💬 Direct chat or booking between learners and teachers  
+- 📆 Class scheduling & time-slot management  
+- 🪙 Wallet system for payment handling  
+
+---
+
+## 🛠️ Tech Stack
+**Frontend:** React, TailwindCSS, Animate.css, react-hot-toast , swiper  
+**Authentication:** Firebase Auth  
+**Routing:** React Router  
+**State Management:** React Context API  
+
+---
+
+## 💡 Author
+**Fahid Aqundow**  
+Built with ❤️ using React & Firebase.

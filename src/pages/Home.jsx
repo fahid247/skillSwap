@@ -10,7 +10,7 @@ import OurImpact from "../components/OurImpact";
 
 const Home = () => {
   return (
-    <div className="bg-[#E1D0B3] max-w-[1440px] mx-auto p-5">
+    <div className="bg-[#E1D0B3] max-w-[1440px] mx-auto z-0 relative p-5">
       <HeroSlider></HeroSlider>
       <section className="popular-skills my-10">
         <h1 className="text-[min(5vw,48px)] font-semibold">Popular Skills:</h1>

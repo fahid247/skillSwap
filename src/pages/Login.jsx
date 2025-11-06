@@ -8,6 +8,7 @@ import { auth } from "../firebase.init";
 import toast from "react-hot-toast";
 import { use, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { setUser } = use(AuthContext);
@@ -15,6 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState("");
   const [emailInput, setEmailInput] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -107,16 +109,25 @@ const Login = () => {
                     required
                   />
                   <label className="label">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    className="input bg-[#fffbd1] "
-                    placeholder="Password"
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      className="input bg-[#fffbd1]/12 "
+                      placeholder="Password"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-5 hover:cursor-pointer top-3 text-gray-600"
+                    >
+                      {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16}/>}
+                    </button>
+                  </div>
                   <div>
                     <Link
                       to="/forgetPassword"
-                      state={{ email: emailInput }} 
+                      state={{ email: emailInput }}
                       className="link link-hover text-blue-800"
                     >
                       Forgot password?

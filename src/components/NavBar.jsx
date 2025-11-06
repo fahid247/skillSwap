@@ -1,41 +1,44 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import logo from "../assets/Untitled.jpg"
+import logo from "../assets/Untitled.jpg";
 import { FaUserCircle } from "react-icons/fa";
-import "../app.css"
+import "../app.css";
 import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.init";
 import toast from "react-hot-toast";
-
+import "animate.css";
 
 const Navbar = () => {
-    const {user , loading}=use(AuthContext);
-    const handleLogOut=()=>{
-        signOut(auth).then(()=>{
-            toast.success("signout successfully",{
-                style:{
-                    backgroundColor:"lightgreen"
-                }
-            })
-        }).catch((error)=>{
-                        toast.error(`${error}`,{
-                style:{
-                    backgroundColor:"black",
-                    color:"bisque"
-                }
-            })
-
-        })
-    }
-    const links = <>
-        <li>
-              <NavLink to={'/'}>Home</NavLink>
-            </li>
-            <li>
-              <NavLink to={"/myProfile"}>My Profile</NavLink>
-            </li>
+  const { user, loading } = use(AuthContext);
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("signout successfully", {
+          style: {
+            backgroundColor: "lightgreen",
+          },
+        });
+      })
+      .catch((error) => {
+        toast.error(`${error}`, {
+          style: {
+            backgroundColor: "black",
+            color: "bisque",
+          },
+        });
+      });
+  };
+  const links = (
+    <>
+      <li>
+        <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/myProfile"}>My Profile</NavLink>
+      </li>
     </>
+  );
   return (
     <div className="navbar bg-[#9BB4C0] shadow-sm">
       <div className="navbar-start">
@@ -64,7 +67,10 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className=" flex items-center gap-2 font-bold text-xl text-[min(4vw,20px)] text-[#703B3B] "><img className="h-7 w-7 rounded-2xl" src={logo} alt="" /><Link to={"/"}>SkillSwap</Link></div>
+        <div className="animate__animated animate__rubberBand flex items-center gap-2 font-bold text-xl text-[min(4vw,20px)] text-[#703B3B] ">
+          <img className="h-7 w-7 rounded-2xl" src={logo} alt="" />
+          <Link to={"/"}>SkillSwap</Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-semibold text-white">
@@ -72,11 +78,47 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex items-center gap-2">
-        <FaUserCircle size={24}></FaUserCircle>
-        {user?<button onClick={handleLogOut} className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">Log Out</button>:<Link to={"/login"} className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]">{loading?<div className="text-center flex justify-center items-center  text-gray-500">
-          <span className="loading loading-spinner loading-xl"></span>
-        </div>:"LogIn"}</Link>}
-        
+        {user ? (
+          <>
+            <div
+              className="tooltip tooltip-bottom"
+              data-tip={user.displayName || "User"}
+            >
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt="User Avatar"
+                  className="w-8 h-8 rounded-full border-2 border-white object-cover"
+                />
+              ) : (
+                <FaUserCircle size={28} className="text-white" />
+              )}
+            </div>
+
+            <button
+              onClick={handleLogOut}
+              className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]"
+            >
+              Log Out
+            </button>
+          </>
+        ) : (
+          <>
+            <FaUserCircle size={28} className="text-white" />
+            <Link
+              to="/login"
+              className="btn bg-[#703B3B] border-none text-[min(3vw,14px)]"
+            >
+              {loading ? (
+                <div className="text-center flex justify-center items-center text-gray-500">
+                  <span className="loading loading-spinner loading-xl"></span>
+                </div>
+              ) : (
+                "Login"
+              )}
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

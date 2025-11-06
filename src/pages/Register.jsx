@@ -4,10 +4,12 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { auth } from "../firebase.init";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { setUser } = use(AuthContext);
   const [passwordError, setPasswordError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const handleSignUp = (e) => {
@@ -94,12 +96,21 @@ const Register = () => {
                     placeholder="Photo-URL"
                   />
                   <label className="label">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    className="input bg-[#fffbd1] "
-                    placeholder="Password"
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      className="input bg-[#fffbd1]/12 "
+                      placeholder="Password"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-5 hover:cursor-pointer top-3 text-gray-600"
+                    >
+                      {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16}/>}
+                    </button>
+                  </div>
                   {passwordError && (
                     <p className="text-red-600 text-sm mt-1">{passwordError}</p>
                   )}
